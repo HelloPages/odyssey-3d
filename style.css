@@ -89,3 +89,53 @@ footer .text-links { margin-top: 6px; }
   .scene-grid { grid-template-columns: 1fr; }
   .catalog-feature .game-copy { padding: 13px 15px 16px; }
 }
+
+/* Moving game previews and depth cues */
+.catalog-intro { position: relative; isolation: isolate; }
+.catalog-particles {
+  position: absolute;
+  inset: -16px -12px 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, transparent 16%, #000 65%, #000);
+}
+.catalog-particles::before, .catalog-particles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  animation: drift 16s linear infinite;
+}
+.catalog-particles::before {
+  background-image: radial-gradient(circle at 18% 40%, #d1e4e466 1px, transparent 1.6px), radial-gradient(circle at 71% 67%, #fff7 1px, transparent 1.6px);
+  background-size: 141px 97px, 171px 123px;
+}
+.catalog-particles::after {
+  background-image: radial-gradient(circle at 62% 25%, #fff9 1.3px, transparent 2px);
+  background-size: 177px 101px;
+  animation-duration: 9s;
+}
+@keyframes drift {
+  from { transform: scale(1); opacity: .45; }
+  50% { opacity: 1; }
+  to { transform: scale(1.4); opacity: .45; }
+}
+.motion-paused .catalog-particles::before, .motion-paused .catalog-particles::after { animation-play-state: paused; }
+.catalog-motion { display: flex; align-items: center; flex-wrap: wrap; gap: 0 12px; color: var(--muted); font-size: .86rem; }
+.motion-toggle { min-height: 44px; padding: 0 6px; border: 0; background: none; color: var(--accent); font: inherit; text-decoration: underline; text-underline-offset: .25em; cursor: pointer; }
+.motion-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.game-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #08111b; }
+.game-media img, .game-media video { width: 100%; height: 100%; object-fit: cover; }
+.game-media video { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .28s ease-out; }
+.game-media.is-playing video { opacity: 1; }
+.home-video, .usage-scenes, .video-setup { max-width: 760px; }
+.home-video .text-links { margin-top: 12px; }
+.video-formats { margin-top: 16px; }
+.video-formats > div { padding: 10px 0; border-top: 1px solid var(--line); }
+.video-formats dt { font-weight: 700; }
+.video-formats dd { margin-top: 4px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) {
+  .catalog-particles::before, .catalog-particles::after { animation: none; }
+  .game-media video { transition: none; }
+}
