@@ -411,25 +411,35 @@ header { position:sticky; top:0; z-index:20; }
  .spec-list > div:nth-child(odd) { background:#17262b; }
 }
 
-nav { display:grid; grid-auto-flow:column; grid-auto-columns:auto; gap:0; border:1px solid #52666f; background:#19272d; }
-nav a { position:relative; justify-content:center; min-height:48px; padding:10px 12px; background:transparent; border:0; border-radius:0; font-weight:400; color:#d2dde0; }
-nav a + a { border-left:1px solid #52666f; }
-nav a::after { content:""; position:absolute; inset:auto 0 0; height:3px; background:transparent; }
-nav a[aria-current] { background:#29454c; color:#b4f3ed; }
-nav a[aria-current]::after { background:currentColor; }
-nav a:hover { background:#24383f; color:#edf9f6; }
-nav .nav-game-invite { background:#29271e; color:#ffe29a; border-color:#52666f; animation:none; }
-nav .nav-game-invite[aria-current] { background:#44371e; color:#ffe29a; border-color:#52666f; }
-nav .nav-game-invite .invite-label { animation:comic-hop 4.8s cubic-bezier(.22,.8,.3,1) infinite; }
-nav .invite-glint { right:0; top:-3px; width:17px; height:17px; }
-@media(prefers-reduced-motion:reduce) { nav .nav-game-invite .invite-label { animation:none; } }
+/* Four distinct optical navigation destinations; no table grid or closed button frames. */
+nav { display:grid; grid-auto-flow:column; grid-auto-columns:auto; gap:12px; border:0; background:none; }
+nav a { position:relative; display:flex; flex-direction:column; justify-content:center; gap:7px; min-height:78px; padding:10px 12px 12px; background:linear-gradient(180deg,#1b273140,#18242d90); border:0; border-radius:0; font-weight:400; color:#c5d2d8; transition:background .2s,color .2s; }
+nav a + a { border:0; }
+nav a::after { content:""; position:absolute; inset:auto 12px 0; height:1px; background:#526674; }
+nav a[aria-current] { background:linear-gradient(180deg,#233a4540,#263f4d);color:#b5f3ef; border-color:transparent; }
+nav a[aria-current]::after { background:#b5f3ef; height:2px; }
+nav a:hover { color:#fff; background:#243640; }
+nav .nav-game-invite,nav .nav-game-invite[aria-current] { color:#ffe2a0; border:0; animation:none; }
+nav .nav-game-invite[aria-current] { background:linear-gradient(180deg,#40332340,#393227); }
+nav .nav-game-invite[aria-current]::after { background:#ffe2a0; }
+.nav-symbol { position:relative; height:23px; width:27px; display:flex; align-items:center; justify-content:center; }
+.nav-symbol > svg:not(.invite-glint) { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.nav-symbol .icon-depth { opacity:.5; }
+.nav-caption { display:block; white-space:nowrap; line-height:1.25; }
+nav a[href="qr.html"] .nav-symbol > svg { width:1em; height:1em; }
+nav .nav-game-invite .nav-symbol { animation:nav-heartbeat 4.8s cubic-bezier(.22,.8,.3,1) infinite; }
+nav .invite-glint { right:-9px; top:-6px; width:15px; height:15px; }
+@keyframes nav-heartbeat {0%,5%,30%,100%{transform:translateY(0)}12%{transform:translateY(-4px)}18%{transform:translateY(0)}23%{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce) { nav .nav-game-invite .nav-symbol { animation:none; } }
 @media(max-width:650px) {
- .header-inner { width:calc(100% - 16px); gap:10px; padding-bottom:10px; }
- .header-inner .brand { padding-inline:8px; }
- nav { width:100%; grid-auto-flow:column; grid-template-columns:none; grid-auto-columns:auto; gap:0; }
- nav a { font-size:clamp(16px,4.6vw,18px); padding:7px 2px; }
- nav .scan-icon { margin-left:2px; }
- .section,.game-card { scroll-margin-top:115px; }
+ .header-inner { width:calc(100% - 24px); gap:12px; padding-bottom:12px; }
+ .header-inner .brand { padding-inline:4px; }
+ nav { width:100%; grid-auto-flow:column; grid-template-columns:none; grid-auto-columns:auto; gap:6px; }
+ nav a { font-size:clamp(16px,4.6vw,18px); padding:9px 3px 11px; min-height:76px; }
+ nav a::after { left:8px; right:8px; }
+ .section,.game-card { scroll-margin-top:145px; }
+ .product-hero .product-specs { gap:10px; }
+ .product-hero .product-specs dt,.product-hero .product-specs dd { white-space:nowrap; }
 }
 .game-media:not(.is-playing) .game-sparks,.game-media[data-view] .game-sparks { opacity:0; }
 /* Four independent live windows rearrange inside the same physical monitor. */
