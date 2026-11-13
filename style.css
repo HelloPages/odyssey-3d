@@ -372,3 +372,43 @@ footer { font-size: 18px; }
 
 .scan-icon { width: 1em; height: 1em; flex: 0 0 1em; display: inline-block; margin-left: 4px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 @media(max-width:650px) { nav { gap:10px; } nav a { font-size:16px; } }
+
+/* Conversation pairs: different surfaces, one consistent reading size. */
+.sales-line { display:grid; gap:12px; }
+.sales-question, .sales-answer { border-radius:9px; padding:16px 18px; }
+.sales-question { margin-right:20px; background:#263b48; color:#f1f6f8; }
+.sales-answer { margin-left:20px; background:#d6efe8; color:#142d2b; }
+.sales-line .sales-role { display:block; font-size:18px; line-height:1.75; font-weight:400; margin-bottom:6px; }
+.sales-question .sales-role { color:#b9d9eb; }
+.sales-answer .sales-role { color:#38685e; }
+main .sales-question p,main .sales-answer blockquote,main .sales-answer p { color:inherit; font-size:18px; line-height:1.75; margin:0; }
+main .sales-answer .sales-followup { margin-top:12px; color:#34554e; }
+.product-hero > .sales-line { border:0; padding-top:0; margin-top:16px; }
+/* Consistent grouping for setup, support and specifications. */
+.setup-steps { display:grid; gap:12px; }
+.setup-steps li { padding:18px; background:#182a30; border:1px solid #354b53; border-radius:9px; align-items:start; }
+.setup-steps .setup-icon { margin-top:2px; }
+.quick-checks dl { display:grid; gap:16px; }
+.quick-checks dl > div { padding:0; border:0; border-radius:9px; overflow:hidden; }
+.quick-checks dt { background:#263b48; color:#f1f6f8; padding:12px 18px; font-weight:400; }
+.quick-checks dd { background:#d6efe8; color:#142d2b; padding:16px 18px; margin:0; }
+.pc-requirements { gap:18px; }
+.pc-requirements > div { padding:20px; background:#182a30; border:1px solid #354b53; border-radius:9px; }
+.quick-equipment > div { padding:18px; background:#17272d; border-top:0; }
+.quick-equipment > div:nth-child(even) { background:#1c3036; }
+.quick-equipment > div:first-child { border-radius:9px 9px 0 0; }
+.quick-equipment > div:last-child { border-radius:0 0 9px 9px; }
+.spec-list { gap:0 28px; }
+.spec-list > div { padding:15px 12px; }
+.spec-list > div:nth-child(4n+1),.spec-list > div:nth-child(4n+2) { background:#17262b; }
+.game-copy { background:linear-gradient(135deg,#1b2b33,#172126); }
+header { position:sticky; top:0; z-index:20; }
+.section,.game-card { scroll-margin-top:110px; }
+@media(max-width:650px) {
+ .sales-question,.sales-answer { padding:16px; }
+ .sales-question { margin-right:14px; }
+ .sales-answer { margin-left:14px; }
+ .setup-steps li { grid-template-columns:40px minmax(0,1fr); gap:12px; padding:16px; }
+ .spec-list > div:nth-child(n) { background:none; }
+ .spec-list > div:nth-child(odd) { background:#17262b; }
+}
