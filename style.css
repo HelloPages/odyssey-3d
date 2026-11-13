@@ -502,3 +502,15 @@ nav .invite-glint { right:-9px; top:-6px; width:15px; height:15px; }
 @keyframes note-progress{0%,100%{width:25%}70%{width:95%}}
 .hero-paused .desktop-scene * {animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.desktop-scene *{animation:none!important;transition:none!important}}
+
+/* One editorial masthead, separate from navigation actions. */
+.brand-guide .brand-title { color:inherit; font-size:20px; font-weight:600; line-height:1.25; white-space:nowrap; letter-spacing:0; cursor:default; }
+
+@media(max-width:650px) {
+ .header-inner { gap:7px; padding-top:8px; padding-bottom:8px; }
+ nav a { min-height:62px; padding-top:6px; padding-bottom:8px; gap:4px; }
+ .nav-symbol { height:20px; }
+ .nav-symbol > svg:not(.invite-glint) { width:20px; height:20px; }
+ .section.product-hero { padding-top:0; }
+ .section,.game-card { scroll-margin-top:116px; }
+}
