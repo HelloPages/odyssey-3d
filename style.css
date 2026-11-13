@@ -242,7 +242,7 @@ footer .text-links { margin-top: 6px; }
 .concert-stage {
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  mask-image: linear-gradient(#000 90%, transparent);
+  mask-image: none;
 }
 .concert-lead {
   position: absolute;
@@ -252,7 +252,7 @@ footer .text-links { margin-top: 6px; }
   height: 105%;
   pointer-events: none;
   filter: drop-shadow(2px 3px 5px #100c1c9c);
-  mask-image: linear-gradient(#000 88%, transparent);
+  mask-image: none;
 }
 .concert-lead img {
   width: 100%;
@@ -262,7 +262,7 @@ footer .text-links { margin-top: 6px; }
 }
 
 .travel-scene { display: grid; grid-template-columns: 1.45fr 1fr; align-items: center; width: min(100%, 640px); justify-self: end; }
-.travel-scene img { aspect-ratio: 2.2; object-fit: cover; mask-image: linear-gradient(90deg, #000 76%, transparent); }
+.travel-scene img { aspect-ratio: 2.2; object-fit: cover; mask-image: none; }
 .travel-scene figcaption { margin: 0; padding-inline: 12px 0; }
 .home-pc > p { max-width: 50em; }
 .home-pc > p strong { color: #edf4f4; }
@@ -417,10 +417,12 @@ nav a[aria-current] { background:#d6efe8; color:#142d2b; border-color:#d6efe8; }
 nav .nav-game-invite[aria-current] { background:#392f19; color:#ffe29a; border-color:#b4964d; }
 nav .invite-glint { right:1px; top:-10px; }
 @media(max-width:650px) {
- .header-inner { gap:10px; padding-bottom:10px; }
- nav { width:100%; grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
- nav a { font-size:18px; padding:7px 10px; }
- .section,.game-card { scroll-margin-top:160px; }
+ .header-inner { width:calc(100% - 16px); gap:10px; padding-bottom:10px; }
+ .header-inner .brand { padding-inline:8px; }
+ nav { width:100%; grid-auto-flow:column; grid-template-columns:none; grid-auto-columns:auto; gap:4px; }
+ nav a { font-size:clamp(16px,4.6vw,18px); padding:7px 2px; }
+ nav .scan-icon { margin-left:2px; }
+ .section,.game-card { scroll-margin-top:115px; }
 }
 .game-media:not(.is-playing) .game-sparks,.game-media[data-view] .game-sparks { opacity:0; }
 /* Four independent live windows rearrange inside the same physical monitor. */
