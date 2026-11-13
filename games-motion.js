@@ -164,13 +164,16 @@ function drawParticles(time) {
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       }
       ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < 96; i++) {
+      for (let i = 0; i < 192; i++) {
         const angle = i * 2.39996323;
         const seed = (Math.sin(i * 127.1 + 311.7) * 43758.5453 % 1 + 1) % 1;
         const phase = (time / (2300 + (i % 7) * 190) + seed) % 1;
         const distance = phase * phase;
         const x = width * .5 + Math.cos(angle) * width * .79 * distance;
         const y = height * .4 + Math.sin(angle) * height * .94 * distance;
+        // The monitor bezel and stand occlude the rear particles.
+        if (x>width*.12 && x<width*.88 && y>height*.05 && y<height*.75) continue;
+        if (x>width*.4 && x<width*.63 && y>=height*.75) continue;
         const alpha = Math.min(1, phase * 8) * Math.min(1, (1 - phase) * 5);
         const size = .6 + distance * (i % 4 === 0 ? 2.3 : 1.4);
         ctx.fillStyle = `rgba(244,252,255,${alpha * .85})`;
