@@ -537,3 +537,53 @@ nav .invite-glint { right:-9px; top:-6px; width:15px; height:15px; }
 [data-layout="2"] .library-window {left:2%;top:51%;width:61%;height:42%;z-index:2}
 [data-layout="2"] .scope-window {left:65%;top:7%;width:33%;height:42%;z-index:2}
 [data-layout="2"] .notes-window {left:65%;top:51%;width:33%;height:42%;z-index:2}
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 3px;
+  color: #b9c8cf;
+}
+.language-switch button {
+  min-width: 34px;
+  min-height: 40px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  font: 600 12px/1 system-ui, sans-serif;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+.language-switch button:hover,
+.language-switch button[aria-pressed="true"] {
+  background: #20333c;
+  border-color: #41656d;
+  color: #b5f3ef;
+}
+.language-switch button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+[data-page="share"] .language-switch { color: #36525a; }
+[data-page="share"] .language-switch button:hover,
+[data-page="share"] .language-switch button[aria-pressed="true"] {
+  background: #e6f2f2;
+  border-color: #a3c4c5;
+  color: #174c54;
+}
+.game-en[hidden] { display: none; }
+html:not([lang="zh-Hant-TW"]) .desktop-window .window-title { overflow: hidden; white-space: nowrap; }
+@media (min-width: 651px) {
+  .header-inner > nav { margin-inline-start: auto; }
+}
+@media (max-width: 650px) {
+  .header-inner { column-gap: 6px; }
+  .header-inner > nav { order: 3; }
+  .header-inner > .language-switch { margin-inline-start: auto; }
+  .brand-guide .brand-title { font-size: clamp(14px, 4.5vw, 20px); }
+  html:not([lang="zh-Hant-TW"]) .nav-caption { font-size: clamp(13px, 3.9vw, 16px); }
+  html:not([lang="zh-Hant-TW"]) .product-hero .product-specs dd { white-space: normal; }
+  html:not([lang="zh-Hant-TW"]) .product-hero .product-picture { width: 100%; margin-inline: 0; }
+  html:not([lang="zh-Hant-TW"]) .warranty-math { gap: 8px; }
+  html:not([lang="zh-Hant-TW"]) .warranty-math > div { flex: 1; min-width: 0; }
+  html:not([lang="zh-Hant-TW"]) .warranty-math small { display: block; font-size: 14px; line-height: 1.25; }
+}
