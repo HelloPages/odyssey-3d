@@ -376,8 +376,8 @@ footer { font-size: 18px; }
 /* Conversation pairs: different surfaces, one consistent reading size. */
 .sales-line { display:grid; gap:12px; }
 .sales-question, .sales-answer { border-radius:9px; padding:16px 18px; }
-.sales-question { margin-right:20px; background:#263b48; color:#f1f6f8; }
-.sales-answer { margin-left:20px; background:#d6efe8; color:#142d2b; }
+.sales-question { margin:0; background:#263b48; color:#f1f6f8; }
+.sales-answer { margin:0; background:#d6efe8; color:#142d2b; }
 .sales-line .sales-role { display:block; font-size:18px; line-height:1.75; font-weight:400; margin-bottom:6px; }
 .sales-question .sales-role { color:#b9d9eb; }
 .sales-answer .sales-role { color:#38685e; }
@@ -406,8 +406,6 @@ header { position:sticky; top:0; z-index:20; }
 .section,.game-card { scroll-margin-top:110px; }
 @media(max-width:650px) {
  .sales-question,.sales-answer { padding:16px; }
- .sales-question { margin-right:14px; }
- .sales-answer { margin-left:14px; }
  .setup-steps li { grid-template-columns:40px minmax(0,1fr); gap:12px; padding:16px; }
  .spec-list > div:nth-child(n) { background:none; }
  .spec-list > div:nth-child(odd) { background:#17262b; }
