@@ -27,7 +27,7 @@ function updatePlayback() {
     if (active.has(card)) continue;
     const video = card.querySelector('video');
     active.add(card);
-    video.src = video.dataset.src;
+    video.src = video.dataset.src + (video.dataset.revision ? '?v=' + encodeURIComponent(video.dataset.revision) : '');
     video.play().catch(error => {
       if (error.name === 'AbortError' || !active.has(card)) return;
       failed.add(card);
