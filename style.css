@@ -303,15 +303,30 @@ footer .text-links { margin-top: 6px; }
 .sales-line blockquote { margin: 0; color: #edf4f4; font-size: 1rem; line-height: 1.8; }
 .sales-line p { margin-top: 8px; font-size: .88rem; color: var(--muted); }
 .product-hero > .sales-line { width: min(100%,620px); margin-top: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
-.game-invite { position: relative; transform-origin: center; animation: game-heartbeat 4.4s ease-in-out infinite; }
-.nav-game-invite { color: #b7faf6; font-weight: 650; }
-@keyframes game-heartbeat {
-  0%,55%,80%,100% { transform: translateY(0) scale(1); }
-  61% { transform: translateY(-6px) scale(1.06); }
-  67% { transform: translateY(0) scale(1); }
-  73% { transform: translateY(-3px) scale(1.03); }
+.game-invite { position: relative; transform-origin: 50% 80%; color: #ffd779; font-weight: 400; animation: comic-hop 4.8s cubic-bezier(.22,.8,.3,1) infinite; }
+nav .nav-game-invite, nav .nav-game-invite[aria-current] { color: #ffd779; font-weight: 400; }
+nav .nav-game-invite[aria-current] { border-color: #ffd779; animation: none; }
+.button.primary.game-invite { color: #ffe29a; font-weight: 400; background: #292318; border-color: #a48747; padding-right: 22px; }
+.invite-glint { position: absolute; right: -10px; top: -2px; width: 23px; height: 23px; overflow: visible; pointer-events: none; fill: none; stroke: #ffe9ad; stroke-width: 2.3; stroke-linecap: round; }
+.button .invite-glint { right: -7px; top: -10px; width: 27px; height: 27px; }
+.invite-glint path { transform-box: fill-box; transform-origin: center; opacity: .32; animation: comic-glint 4.8s ease-out infinite; }
+.invite-glint path:nth-child(2) { animation-delay: .09s; }
+.invite-glint path:nth-child(3) { animation-delay: .18s; }
+.game-invite:hover, .game-invite:focus-visible { color: #fff0c8; }
+.game-invite:hover .invite-glint path, .game-invite:focus-visible .invite-glint path { stroke: #fff7df; }
+@keyframes comic-hop {
+  0%,4%,29%,100% { transform: translateY(0) rotate(0); }
+  7% { transform: translateY(1px) rotate(0); }
+  12% { transform: translateY(-6px) rotate(-2deg); }
+  17% { transform: translateY(0) rotate(1deg); }
+  22% { transform: translateY(-3px) rotate(-.7deg); }
 }
-@media (prefers-reduced-motion: reduce) { .game-invite { animation: none; } }
+@keyframes comic-glint {
+  0%,5%,32%,100% { opacity: .32; transform: scale(.78); }
+  12%,22% { opacity: 1; transform: scale(1.2); }
+  17% { opacity: .6; transform: scale(.95); }
+}
+@media (prefers-reduced-motion: reduce) { .game-invite,.invite-glint path { animation: none; } .invite-glint path { opacity: .8; } }
 
 .quick-equipment { margin-top: 20px; }
 .quick-equipment > div { display: grid; grid-template-columns: 9em minmax(0,1fr); gap: 20px; border-top: 1px solid var(--line); padding: 16px 0; }
@@ -331,3 +346,29 @@ footer .text-links { margin-top: 6px; }
 .warranty-math > b { color:var(--muted); font-size:1.3rem; font-weight:400; }
 .warranty-total strong,.warranty-total small { color:var(--accent); }
 .warranty-feature .warranty-dates { font-size:.84rem; margin-block:18px 10px; }
+
+/* Keep reading text generous and consistent across the training and customer pages. */
+body { font-size: 18px; line-height: 1.75; }
+nav a { font-size: 18px; font-weight: 400; }
+.brand span { font-size: 18px; }
+main p, main li, main dt, main dd, main figcaption, main .sales-line blockquote,
+main .sales-line .sales-cue, main .product-intro .product-model,
+main .product-intro > p:not(.product-model), main .sales-line p,
+main .game-copy .game-en, main .game-copy .platform, main .source-note,
+main .product-hero .product-specs dt, main .product-hero .product-specs dd,
+main .spec-list dt, main .spec-list dd, main .warranty-feature .warranty-dates,
+main .warranty-math small, main .button, main .text-links,
+main .video-panel figcaption strong, main .video-panel figcaption span {
+  font-size: 18px; line-height: 1.75;
+}
+main h1, main h2, main h3, main .product-intro h1,
+main .catalog-feature h3, main .setup-steps h2, main .pc-requirements h3 {
+  font-size: 24px; line-height: 1.4; letter-spacing: 0;
+}
+footer { font-size: 18px; }
+.sales-line .sales-cue { margin-bottom: 10px; }
+.sales-line blockquote { margin: 0; }
+.sales-line p { margin-top: 12px; }
+
+.scan-icon { width: 1em; height: 1em; flex: 0 0 1em; display: inline-block; margin-left: 4px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+@media(max-width:650px) { nav { gap:10px; } nav a { font-size:16px; } }
